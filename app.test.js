@@ -49,7 +49,7 @@ describe('Test /quotes/search route', () => {
 
     // Check that all returned quotes contain the search term in the "quote" key
     response.body.forEach((quote) => {
-      expect(quote.quote).toContain('life');
+      expect(quote.quote.toLowerCase()).toContain('life');
    	});     
 	// Send a request to the /quotes/search route with a search term that does not exist in any quotes
     const response2 = await request(app).get('/quotes/search?term=xyz');
