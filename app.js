@@ -38,10 +38,10 @@ app.get('/quotes/random', (req, res) => {
 // Define the /quotes/search route
 app.get('/quotes/search', (req, res) => {
   // Get the search term from the query string
-  const term = req.query.term;
+  const term = req.query.term.toLowerCase();
 
   // Filter the quotes array to only include quotes that contain the search term in the "quote" key
-  const filteredQuotes = quotes.filter((quote) => quote.quote.includes(term));
+  const filteredQuotes = quotes.filter((el) => el.quote.toLowerCase().includes(term));
 
   // Send the filtered quotes array as the response
   res.send(filteredQuotes);
